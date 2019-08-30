@@ -1,10 +1,10 @@
 import React,{ useEffect, useState} from "react";
 import "./App.css";
 import  axios from 'axios';
-import Title from "./Components/Title";
-import Date from "./Components/Date";
 import Image from "./Components/Image";
 import Explanation from "./Components/Explaination";
+import Jumbo from "./Components/JumboTron";
+import styled from "styled-components";
 
 
 function App() {
@@ -18,17 +18,19 @@ function App() {
             .catch((err) => console.log(err));
     },[]);
 
+    const Background = styled.div`
+        background-color: #005cb3;
+    `;
+
   return (
-    <div className="App">
-        <Date date={data.date}/>
-        <Title title={data.title}/>
+    <Background className="App">
+        <Jumbo copyright={data.copyright}
+                    title={data.title}
+                    date={data.date}
+        />
         <Image image={data}/>
         <Explanation explanation={data.explanation}/>
-      <p>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun 🚀!
-      </p>
-    </div>
+    </Background>
   );
 }
 
